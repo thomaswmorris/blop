@@ -1,11 +1,23 @@
+import warnings
 from typing import Any
 
-import gpytorch
-import torch
-from botorch.models.gp_regression import SingleTaskGP
-from botorch.models.multitask import MultiTaskGP
+import botorch  # type: ignore[import-untyped]
+import gpytorch  # type: ignore[import-untyped]
+import torch  # type: ignore[import-untyped]
+from botorch.models.gp_regression import SingleTaskGP  # type: ignore[import-untyped]
+from botorch.models.multitask import MultiTaskGP  # type: ignore[import-untyped]
+from botorch.models.transforms.input import InputTransform, Normalize
+from botorch.models.transforms.outcome import OutcomeTransform, Standardize
+from botorch.utils.types import DEFAULT, _DefaultType
+from gpytorch.likelihoods.likelihood import Likelihood
+from torch import Tensor
 
 from . import kernels
+
+import gpytorch
+from gpytorch.priors import NormalPrior
+from gpytorch.means import ConstantMean
+from botorch.models.gp_regression import SingleTaskGP
 
 
 class LatentGP(SingleTaskGP):
@@ -13,25 +25,76 @@ class LatentGP(SingleTaskGP):
         self,
         train_X: torch.Tensor,
         train_Y: torch.Tensor,
+        train_Tvar: torch.Tensor = None,
+        train_Yvar: Tensor | None = None,
+        likelihood: Likelihood | None = None,
+        input_transform: InputTransform | None = None,
+        outcome_transform: OutcomeTransform | _DefaultType | None = DEFAULT,
         skew_dims: bool | list[tuple[int, ...]] = True,
         *args: Any,
         **kwargs: Any,
     ) -> None:
-        # Disable outcome transform to avoid shape mismatches with multi-output kernel
-        super().__init__(train_X, train_Y, *args, outcome_transform=None, **kwargs)
+        
+        super().__init__(train_X=train_X,
+                         train_Y=train_Y, 
+                         input_transform=input_transform, 
+                         outcome_transform=outcome_transform,
+                         *args, **kwargs)
 
-        self.mean_module = gpytorch.means.ConstantMean(constant_prior=gpytorch.priors.NormalPrior(loc=0, scale=1))
+        m = train_Y.shape[-1]
+        aug_batch_shape = train_X.shape[:-2] + (torch.Size([m]) if m > 1 else torch.Size())
 
-        self.covar_module = kernels.LatentKernel(
-            num_inputs=train_X.shape[-1],
-            num_outputs=train_Y.shape[-1],
-            skew_dims=skew_dims,
-            priors=True,
-            scale=True,
-            **kwargs,
-        )
+        self.mean_module = ConstantMean(batch_shape=aug_batch_shape, constant_prior=NormalPrior(0.0, 1.0))
+        self.covar_module = kernels.RotatedInputsKernel(d=train_X.shape[-1], batch_shape=aug_batch_shape, skew_dims=skew_dims)
 
-        self.trained: bool = False
+        # return SingleTaskGP(
+        #     train_X=train_X,
+        #     train_Y=train_Y,
+        #     mean_module=mean,
+        #     covar_module=covar,
+        #     outcome_transform=None,  # keep if you truly need it
+        #     **kwargs,
+        # )
+
+
+
+# class LatentGP(SingleTaskGP):
+#     def __init__(
+#         self,
+#         train_X: torch.Tensor,
+#         train_Y: torch.Tensor,
+#         train_Tvar: torch.Tensor = None,
+#         train_Yvar: Tensor | None = None,
+#         likelihood: Likelihood | None = None,
+#         input_transform: InputTransform | None = None,
+#         outcome_transform: OutcomeTransform | _DefaultType | None = DEFAULT,
+#         skew_dims: bool | list[tuple[int, ...]] = True,
+#         *args: Any,
+#         **kwargs: Any,
+#     ) -> None:
+        
+#         *batch_shape, n, d = train_X.shape
+#         input_transform = input_transform or Normalize(d=d)
+#         # outcome_transform = outcome_transform or Standardize(batch_shape=batch_shape)
+
+#         super().__init__(train_X=train_X,
+#                          train_Y=train_Y, 
+#                          input_transform=input_transform, 
+#                          outcome_transform=outcome_transform,
+#                          *args, **kwargs)
+
+#         self.mean_module = gpytorch.means.ConstantMean(constant_prior=gpytorch.priors.NormalPrior(loc=0, scale=1))
+
+#         self.covar_module = kernels.LatentKernel(
+#             num_inputs=train_X.shape[-1],
+#             num_outputs=train_Y.shape[-1],
+#             skew_dims=skew_dims,
+#             priors=True,
+#             scale=True,
+#             **kwargs,
+#         )
+
+#         self.trained: bool = False
 
 
 class MultiTaskLatentGP(MultiTaskGP):
