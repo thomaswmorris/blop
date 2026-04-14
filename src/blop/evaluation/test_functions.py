@@ -1,3 +1,0 @@
-from ..protocols import EvaluationFunction
-
-

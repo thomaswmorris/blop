@@ -4,30 +4,20 @@ Tests the public API of LatentKernel - a Matérn kernel with learned affine
 transformation using SO(N) parameterization for orthogonal rotations.
 """
 
-from unittest.mock import MagicMock, patch
-
-import bluesky.plan_stubs as bps
-import pytest
-from bluesky.run_engine import RunEngine
-from bluesky.utils import plan
-
-from blop.ax.agent import Agent, QueueserverAgent
-from blop.ax.dof import DOFConstraint, RangeDOF
-from blop.ax.objective import Objective
-from blop.ax.optimizer import AxOptimizer
-from blop.callbacks.logger import OptimizationLogger
-from blop.protocols import AcquisitionPlan, EvaluationFunction
-
-from ..conftest import MovableSignal, ReadableSignal
-from .test_agent import mock_acquisition_plan, mock_evaluation_function
-from ..test_plans import _collect_optimize_events
 
 import numpy as np
+import pytest
+from bluesky.run_engine import RunEngine
+
+from blop.ax.agent import Agent
+from blop.ax.dof import DOFConstraint, RangeDOF
+from blop.ax.objective import Objective
+
+from ..conftest import MovableSignal, ReadableSignal
+from ..test_plans import _collect_optimize_events
 
 
-
-
-class TestFunctionEvaluation():
+class TestFunctionEvaluation:
     def __init__(self, tiled_client: Container):
         self.tiled_client = tiled_client
 
@@ -42,20 +32,24 @@ class TestFunctionEvaluation():
             suggestion_id = suggestion["_id"]
             x1 = suggestion["x1"]
             x2 = suggestion["x2"]
-            
-            outcomes.append({"test_function_1": 1 - np.exp(-(x1 - 2 * x2 - 1) ** 2 - 1e-3 * (2 * x1 + x2 - 0.5) ** 2), "_id": suggestion_id,
-                             "test_function_2": 1 - np.exp(-1e-3 * (x1 - 2 * x2 - 1) ** 2 - (2 * x1 + x2 - 0.5) ** 2), "_id": suggestion_id})
 
+            outcomes.append(
+                {
+                    "test_function_1": 1 - np.exp(-((x1 - 2 * x2 - 1) ** 2) - 1e-3 * (2 * x1 + x2 - 0.5) ** 2),
+                    "_id": suggestion_id,
+                    "test_function_2": 1 - np.exp(-1e-3 * (x1 - 2 * x2 - 1) ** 2 - (2 * x1 + x2 - 0.5) ** 2),
+                    "_id": suggestion_id,
+                }
+            )
 
-            
             # outcomes.append({"test_function": (x1 ** 2 + x2 - 11) ** 2 + (x1 + x2 ** 2 - 7) ** 2, "_id": suggestion_id})
-        
+
         return outcomes
+
 
 @pytest.fixture(scope="function")
 def RE():
     return RunEngine({})
-
 
 
 def test_optimize(RE, mock_acquisition_plan, mock_evaluation_function):
@@ -74,10 +68,7 @@ def test_optimize(RE, mock_acquisition_plan, mock_evaluation_function):
         dof_constraints=[constraint],
         acquisition_plan=mock_acquisition_plan,
         name="test_experiment",
-
     )
-
-    
 
     callback, events = _collect_optimize_events()
     RE.subscribe(callback)
