@@ -35,7 +35,7 @@ class LatentGP(SingleTaskGP):
             train_Y=train_Y,
             input_transform=input_transform,
             outcome_transform=outcome_transform,
-            *args,
+            *args,  # noqa
             **kwargs,
         )
 

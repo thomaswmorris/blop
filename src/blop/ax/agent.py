@@ -6,6 +6,7 @@ from typing import Any, cast
 from ax import Client
 from ax.analysis.plotly.surface.contour import ContourPlot
 from ax.core.types import TParamValue
+from ax.generation_strategy.generation_strategy import GenerationStrategy
 
 # ===============================
 # TODO: Remove when Python 3.10 is no longer supported
@@ -242,7 +243,7 @@ class Agent(_AxAgentMixin):
         dof_constraints: Sequence[DOFConstraint] | None = None,
         outcome_constraints: Sequence[OutcomeConstraint] | None = None,
         checkpoint_path: str | None = None,
-        generation_strategy: GenerationStrategy = None,
+        generation_strategy: GenerationStrategy | None = None,
         **kwargs: Any,
     ):
         if any(isinstance(dof.actuator, str) for dof in dofs):

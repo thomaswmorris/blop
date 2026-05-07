@@ -1,4 +1,3 @@
-
 import torch
 from botorch.models.utils.gpytorch_modules import get_matern_kernel_with_gamma_prior
 from gpytorch.kernels import Kernel
@@ -13,7 +12,7 @@ class RotatedInputsKernel(Kernel):
     def __init__(
         self,
         d: int,
-        batch_shape: torch.Size = torch.Size(),
+        batch_shape: torch.Size,
         skew_dims: bool | list[tuple[int, ...]] = True,
     ):
         super().__init__(batch_shape=batch_shape)
