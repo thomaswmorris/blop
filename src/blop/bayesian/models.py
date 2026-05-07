@@ -1,6 +1,5 @@
 from typing import Any
 
-import gpytorch  # type: ignore[import-untyped]
 import torch  # type: ignore[import-untyped]
 from botorch.models.gp_regression import SingleTaskGP  # type: ignore[import-untyped]
 from botorch.models.multitask import MultiTaskGP  # type: ignore[import-untyped]
@@ -108,17 +107,13 @@ class MultiTaskLatentGP(MultiTaskGP):
     ) -> None:
         super().__init__(train_X, train_Y, task_feature, *args, **kwargs)
 
-        self.mean_module = gpytorch.means.ConstantMean(constant_prior=gpytorch.priors.NormalPrior(loc=0, scale=1))
+        m = train_Y.shape[-1]
+        aug_batch_shape = train_X.shape[:-2] + (torch.Size([m]) if m > 1 else torch.Size())
 
-        self.covar_module = kernels.LatentKernel(
-            num_inputs=self.num_non_task_features,
-            skew_dims=skew_dims,
-            priors=True,
-            scale=True,
-            **kwargs,
+        self.mean_module = ConstantMean(batch_shape=aug_batch_shape, constant_prior=NormalPrior(0.0, 1.0))
+        self.covar_module = kernels.RotatedInputsKernel(
+            d=train_X.shape[-1], batch_shape=aug_batch_shape, skew_dims=skew_dims
         )
-
-        self.trained: bool = False
 
 
 class LatentConstraintModel(LatentGP):
