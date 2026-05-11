@@ -46,54 +46,6 @@ class LatentGP(SingleTaskGP):
             d=train_X.shape[-1], batch_shape=aug_batch_shape, skew_dims=skew_dims
         )
 
-        # return SingleTaskGP(
-        #     train_X=train_X,
-        #     train_Y=train_Y,
-        #     mean_module=mean,
-        #     covar_module=covar,
-        #     outcome_transform=None,  # keep if you truly need it
-        #     **kwargs,
-        # )
-
-
-# class LatentGP(SingleTaskGP):
-#     def __init__(
-#         self,
-#         train_X: torch.Tensor,
-#         train_Y: torch.Tensor,
-#         train_Tvar: torch.Tensor = None,
-#         train_Yvar: Tensor | None = None,
-#         likelihood: Likelihood | None = None,
-#         input_transform: InputTransform | None = None,
-#         outcome_transform: OutcomeTransform | _DefaultType | None = DEFAULT,
-#         skew_dims: bool | list[tuple[int, ...]] = True,
-#         *args: Any,
-#         **kwargs: Any,
-#     ) -> None:
-
-#         *batch_shape, n, d = train_X.shape
-#         input_transform = input_transform or Normalize(d=d)
-#         # outcome_transform = outcome_transform or Standardize(batch_shape=batch_shape)
-
-#         super().__init__(train_X=train_X,
-#                          train_Y=train_Y,
-#                          input_transform=input_transform,
-#                          outcome_transform=outcome_transform,
-#                          *args, **kwargs)
-
-#         self.mean_module = gpytorch.means.ConstantMean(constant_prior=gpytorch.priors.NormalPrior(loc=0, scale=1))
-
-#         self.covar_module = kernels.LatentKernel(
-#             num_inputs=train_X.shape[-1],
-#             num_outputs=train_Y.shape[-1],
-#             skew_dims=skew_dims,
-#             priors=True,
-#             scale=True,
-#             **kwargs,
-#         )
-
-#         self.trained: bool = False
-
 
 class MultiTaskLatentGP(MultiTaskGP):
     def __init__(
