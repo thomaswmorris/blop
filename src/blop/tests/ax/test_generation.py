@@ -9,9 +9,9 @@ from bluesky.run_engine import RunEngine
 
 from blop.ax.agent import Agent
 from blop.ax.dof import RangeDOF
-from blop.ax.generation import get_generation_strategy
 from blop.ax.objective import Objective
 from blop.evaluation.test_functions import TestFunctionEvaluation
+from blop.generation import all_strategies, get_generation_strategy
 
 from ..conftest import MovableSignal
 from ..test_plans import _collect_optimize_events
@@ -20,6 +20,11 @@ from ..test_plans import _collect_optimize_events
 @pytest.fixture(scope="function")
 def RE():
     return RunEngine({})
+
+
+@pytest.mark.parametrize("name", all_strategies)
+def test_get_generation_strategy(name):
+    get_generation_strategy(name)
 
 
 def test_optimize(RE):
