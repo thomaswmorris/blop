@@ -1122,7 +1122,7 @@ Worker environment exists: True
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[WARNING 05-10 06:56:44] ax.storage.sqa_store.with_db_settings_base: Ax currently requires a sqlalchemy version below 2.0. This will be addressed in a future release. Disabling SQL storage in Ax for now, if you would like to use SQL storage please install Ax with mysql extras via `pip install ax-platform[mysql]`.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[WARNING 05-11 07:12:51] ax.storage.sqa_store.with_db_settings_base: Ax currently requires a sqlalchemy version below 2.0. This will be addressed in a future release. Disabling SQL storage in Ax for now, if you would like to use SQL storage please install Ax with mysql extras via `pip install ax-platform[mysql]`.
 </pre></div>
 </div>
 </div>
@@ -1237,8 +1237,8 @@ ZMQ proxy output port (5578) where Bluesky documents are published.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[INFO 05-10 06:56:44] ax.api.client: GenerationStrategy(name=&#39;Center+Sobol+MBM:fast&#39;, nodes=[CenterGenerationNode(next_node_name=&#39;Sobol&#39;), GenerationNode(name=&#39;Sobol&#39;, generator_specs=[GeneratorSpec(generator_enum=Sobol, generator_key_override=None)], transition_criteria=[MinTrials(transition_to=&#39;MBM&#39;), MinTrials(transition_to=&#39;MBM&#39;)], suggested_experiment_status=ExperimentStatus.INITIALIZATION, pausing_criteria=[MaxTrialsAwaitingData(threshold=5)]), GenerationNode(name=&#39;MBM&#39;, generator_specs=[GeneratorSpec(generator_enum=BoTorch, generator_key_override=None)], transition_criteria=None, suggested_experiment_status=ExperimentStatus.OPTIMIZATION, pausing_criteria=None)]) chosen based on user input and problem structure.
-[INFO 05-10 06:56:44] ax.api.client: Generated new trial 0 with parameters {&#39;motor1&#39;: 0.0, &#39;motor2&#39;: 0.0} using GenerationNode CenterOfSearchSpace.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[INFO 05-11 07:12:52] ax.api.client: GenerationStrategy(name=&#39;Center+Sobol+MBM:fast&#39;, nodes=[CenterGenerationNode(next_node_name=&#39;Sobol&#39;), GenerationNode(name=&#39;Sobol&#39;, generator_specs=[GeneratorSpec(generator_enum=Sobol, generator_key_override=None)], transition_criteria=[MinTrials(transition_to=&#39;MBM&#39;), MinTrials(transition_to=&#39;MBM&#39;)], suggested_experiment_status=ExperimentStatus.INITIALIZATION, pausing_criteria=[MaxTrialsAwaitingData(threshold=5)]), GenerationNode(name=&#39;MBM&#39;, generator_specs=[GeneratorSpec(generator_enum=BoTorch, generator_key_override=None)], transition_criteria=None, suggested_experiment_status=ExperimentStatus.OPTIMIZATION, pausing_criteria=None)]) chosen based on user input and problem structure.
+[INFO 05-11 07:12:52] ax.api.client: Generated new trial 0 with parameters {&#39;motor1&#39;: 0.0, &#39;motor2&#39;: 0.0} using GenerationNode CenterOfSearchSpace.
 </pre></div>
 </div>
 </div>
@@ -1263,61 +1263,61 @@ Optimization complete after 10 iterations
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/work/blop/blop/.pixi/envs/docs/lib/python3.13/site-packages/ax/core/data.py:365: FutureWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
   self.full_df.groupby(self.DEDUPLICATE_BY_COLUMNS).apply(
-[INFO 05-10 06:56:46] ax.api.client: Trial 0 marked COMPLETED.
+[INFO 05-11 07:12:53] ax.api.client: Trial 0 marked COMPLETED.
 /home/runner/work/blop/blop/.pixi/envs/docs/lib/python3.13/site-packages/ax/core/data.py:365: FutureWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
   self.full_df.groupby(self.DEDUPLICATE_BY_COLUMNS).apply(
-[INFO 05-10 06:56:46] ax.api.client: Generated new trial 1 with parameters {&#39;motor1&#39;: 4.939206, &#39;motor2&#39;: 4.617587} using GenerationNode Sobol.
+[INFO 05-11 07:12:53] ax.api.client: Generated new trial 1 with parameters {&#39;motor1&#39;: -1.801305, &#39;motor2&#39;: -1.99594} using GenerationNode Sobol.
 /home/runner/work/blop/blop/.pixi/envs/docs/lib/python3.13/site-packages/ax/core/data.py:365: FutureWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
   self.full_df.groupby(self.DEDUPLICATE_BY_COLUMNS).apply(
-[INFO 05-10 06:56:47] ax.api.client: Trial 1 marked COMPLETED.
+[INFO 05-11 07:12:54] ax.api.client: Trial 1 marked COMPLETED.
 /home/runner/work/blop/blop/.pixi/envs/docs/lib/python3.13/site-packages/ax/core/data.py:365: FutureWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
   self.full_df.groupby(self.DEDUPLICATE_BY_COLUMNS).apply(
-[INFO 05-10 06:56:47] ax.api.client: Generated new trial 2 with parameters {&#39;motor1&#39;: -3.94927, &#39;motor2&#39;: -0.382764} using GenerationNode Sobol.
+[INFO 05-11 07:12:54] ax.api.client: Generated new trial 2 with parameters {&#39;motor1&#39;: 1.835844, &#39;motor2&#39;: 4.135006} using GenerationNode Sobol.
 /home/runner/work/blop/blop/.pixi/envs/docs/lib/python3.13/site-packages/ax/core/data.py:365: FutureWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
   self.full_df.groupby(self.DEDUPLICATE_BY_COLUMNS).apply(
-[INFO 05-10 06:56:48] ax.api.client: Trial 2 marked COMPLETED.
+[INFO 05-11 07:12:55] ax.api.client: Trial 2 marked COMPLETED.
 /home/runner/work/blop/blop/.pixi/envs/docs/lib/python3.13/site-packages/ax/core/data.py:365: FutureWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
   self.full_df.groupby(self.DEDUPLICATE_BY_COLUMNS).apply(
-[INFO 05-10 06:56:48] ax.api.client: Generated new trial 3 with parameters {&#39;motor1&#39;: -0.316795, &#39;motor2&#39;: 0.581582} using GenerationNode Sobol.
+[INFO 05-11 07:12:55] ax.api.client: Generated new trial 3 with parameters {&#39;motor1&#39;: 3.159657, &#39;motor2&#39;: -4.507827} using GenerationNode Sobol.
 /home/runner/work/blop/blop/.pixi/envs/docs/lib/python3.13/site-packages/ax/core/data.py:365: FutureWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
   self.full_df.groupby(self.DEDUPLICATE_BY_COLUMNS).apply(
-[INFO 05-10 06:56:49] ax.api.client: Trial 3 marked COMPLETED.
+[INFO 05-11 07:12:56] ax.api.client: Trial 3 marked COMPLETED.
 /home/runner/work/blop/blop/.pixi/envs/docs/lib/python3.13/site-packages/ax/core/data.py:365: FutureWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
   self.full_df.groupby(self.DEDUPLICATE_BY_COLUMNS).apply(
-[INFO 05-10 06:56:49] ax.api.client: Generated new trial 4 with parameters {&#39;motor1&#39;: 0.759943, &#39;motor2&#39;: -4.418163} using GenerationNode Sobol.
+[INFO 05-11 07:12:56] ax.api.client: Generated new trial 4 with parameters {&#39;motor1&#39;: -3.125197, &#39;motor2&#39;: 1.626857} using GenerationNode Sobol.
 /home/runner/work/blop/blop/.pixi/envs/docs/lib/python3.13/site-packages/ax/core/data.py:365: FutureWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
   self.full_df.groupby(self.DEDUPLICATE_BY_COLUMNS).apply(
-[INFO 05-10 06:56:50] ax.api.client: Trial 4 marked COMPLETED.
+[INFO 05-11 07:12:57] ax.api.client: Trial 4 marked COMPLETED.
 /home/runner/work/blop/blop/.pixi/envs/docs/lib/python3.13/site-packages/ax/core/data.py:365: FutureWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
   self.full_df.groupby(self.DEDUPLICATE_BY_COLUMNS).apply(
-[INFO 05-10 06:56:50] ax.api.client: Generated new trial 5 with parameters {&#39;motor1&#39;: -2.735605, &#39;motor2&#39;: 1.194517} using GenerationNode MBM.
+[INFO 05-11 07:12:57] ax.api.client: Generated new trial 5 with parameters {&#39;motor1&#39;: -5.0, &#39;motor2&#39;: 2.062827} using GenerationNode MBM.
 /home/runner/work/blop/blop/.pixi/envs/docs/lib/python3.13/site-packages/ax/core/data.py:365: FutureWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
   self.full_df.groupby(self.DEDUPLICATE_BY_COLUMNS).apply(
-[INFO 05-10 06:56:52] ax.api.client: Trial 5 marked COMPLETED.
+[INFO 05-11 07:12:58] ax.api.client: Trial 5 marked COMPLETED.
 /home/runner/work/blop/blop/.pixi/envs/docs/lib/python3.13/site-packages/ax/core/data.py:365: FutureWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
   self.full_df.groupby(self.DEDUPLICATE_BY_COLUMNS).apply(
-[INFO 05-10 06:56:52] ax.api.client: Generated new trial 6 with parameters {&#39;motor1&#39;: -5.0, &#39;motor2&#39;: 4.244479} using GenerationNode MBM.
+[INFO 05-11 07:12:58] ax.api.client: Generated new trial 6 with parameters {&#39;motor1&#39;: -2.533864, &#39;motor2&#39;: 2.008389} using GenerationNode MBM.
 /home/runner/work/blop/blop/.pixi/envs/docs/lib/python3.13/site-packages/ax/core/data.py:365: FutureWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
   self.full_df.groupby(self.DEDUPLICATE_BY_COLUMNS).apply(
-[INFO 05-10 06:56:53] ax.api.client: Trial 6 marked COMPLETED.
+[INFO 05-11 07:12:59] ax.api.client: Trial 6 marked COMPLETED.
 /home/runner/work/blop/blop/.pixi/envs/docs/lib/python3.13/site-packages/ax/core/data.py:365: FutureWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
   self.full_df.groupby(self.DEDUPLICATE_BY_COLUMNS).apply(
-[INFO 05-10 06:56:53] ax.api.client: Generated new trial 7 with parameters {&#39;motor1&#39;: -2.191417, &#39;motor2&#39;: 0.046855} using GenerationNode MBM.
+[INFO 05-11 07:12:59] ax.api.client: Generated new trial 7 with parameters {&#39;motor1&#39;: -2.708516, &#39;motor2&#39;: 5.0} using GenerationNode MBM.
 /home/runner/work/blop/blop/.pixi/envs/docs/lib/python3.13/site-packages/ax/core/data.py:365: FutureWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
   self.full_df.groupby(self.DEDUPLICATE_BY_COLUMNS).apply(
-[INFO 05-10 06:56:54] ax.api.client: Trial 7 marked COMPLETED.
+[INFO 05-11 07:13:00] ax.api.client: Trial 7 marked COMPLETED.
 /home/runner/work/blop/blop/.pixi/envs/docs/lib/python3.13/site-packages/ax/core/data.py:365: FutureWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
   self.full_df.groupby(self.DEDUPLICATE_BY_COLUMNS).apply(
-[INFO 05-10 06:56:54] ax.api.client: Generated new trial 8 with parameters {&#39;motor1&#39;: -5.0, &#39;motor2&#39;: 1.153837} using GenerationNode MBM.
+[INFO 05-11 07:13:00] ax.api.client: Generated new trial 8 with parameters {&#39;motor1&#39;: -2.421275, &#39;motor2&#39;: 0.707843} using GenerationNode MBM.
 /home/runner/work/blop/blop/.pixi/envs/docs/lib/python3.13/site-packages/ax/core/data.py:365: FutureWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
   self.full_df.groupby(self.DEDUPLICATE_BY_COLUMNS).apply(
-[INFO 05-10 06:56:55] ax.api.client: Trial 8 marked COMPLETED.
+[INFO 05-11 07:13:01] ax.api.client: Trial 8 marked COMPLETED.
 /home/runner/work/blop/blop/.pixi/envs/docs/lib/python3.13/site-packages/ax/core/data.py:365: FutureWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
   self.full_df.groupby(self.DEDUPLICATE_BY_COLUMNS).apply(
-[INFO 05-10 06:56:55] ax.api.client: Generated new trial 9 with parameters {&#39;motor1&#39;: 0.172744, &#39;motor2&#39;: 5.0} using GenerationNode MBM.
+[INFO 05-11 07:13:02] ax.api.client: Generated new trial 9 with parameters {&#39;motor1&#39;: -2.869805, &#39;motor2&#39;: 2.455894} using GenerationNode MBM.
 /home/runner/work/blop/blop/.pixi/envs/docs/lib/python3.13/site-packages/ax/core/data.py:365: FutureWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
   self.full_df.groupby(self.DEDUPLICATE_BY_COLUMNS).apply(
-[INFO 05-10 06:56:56] ax.api.client: Trial 9 marked COMPLETED.
+[INFO 05-11 07:13:03] ax.api.client: Trial 9 marked COMPLETED.
 </pre></div>
 </div>
 </div>
@@ -1381,9 +1381,9 @@ Optimization complete after 10 iterations
       <td>1_0</td>
       <td>COMPLETED</td>
       <td>Sobol</td>
-      <td>695.478561</td>
-      <td>4.939206</td>
-      <td>4.617587</td>
+      <td>118.295245</td>
+      <td>-1.801305</td>
+      <td>-1.995940</td>
     </tr>
     <tr>
       <th>2</th>
@@ -1391,9 +1391,9 @@ Optimization complete after 10 iterations
       <td>2_0</td>
       <td>COMPLETED</td>
       <td>Sobol</td>
-      <td>134.457174</td>
-      <td>-3.949270</td>
-      <td>-0.382764</td>
+      <td>154.635944</td>
+      <td>1.835844</td>
+      <td>4.135006</td>
     </tr>
     <tr>
       <th>3</th>
@@ -1401,9 +1401,9 @@ Optimization complete after 10 iterations
       <td>3_0</td>
       <td>COMPLETED</td>
       <td>Sobol</td>
-      <td>155.162607</td>
-      <td>-0.316795</td>
-      <td>0.581582</td>
+      <td>302.114767</td>
+      <td>3.159657</td>
+      <td>-4.507827</td>
     </tr>
     <tr>
       <th>4</th>
@@ -1411,9 +1411,9 @@ Optimization complete after 10 iterations
       <td>4_0</td>
       <td>COMPLETED</td>
       <td>Sobol</td>
-      <td>396.606128</td>
-      <td>0.759943</td>
-      <td>-4.418163</td>
+      <td>56.083456</td>
+      <td>-3.125197</td>
+      <td>1.626857</td>
     </tr>
     <tr>
       <th>5</th>
@@ -1421,9 +1421,9 @@ Optimization complete after 10 iterations
       <td>5_0</td>
       <td>COMPLETED</td>
       <td>MBM</td>
-      <td>74.426522</td>
-      <td>-2.735605</td>
-      <td>1.194517</td>
+      <td>317.995483</td>
+      <td>-5.000000</td>
+      <td>2.062827</td>
     </tr>
     <tr>
       <th>6</th>
@@ -1431,9 +1431,9 @@ Optimization complete after 10 iterations
       <td>6_0</td>
       <td>COMPLETED</td>
       <td>MBM</td>
-      <td>369.048470</td>
-      <td>-5.000000</td>
-      <td>4.244479</td>
+      <td>36.863407</td>
+      <td>-2.533864</td>
+      <td>2.008389</td>
     </tr>
     <tr>
       <th>7</th>
@@ -1441,9 +1441,9 @@ Optimization complete after 10 iterations
       <td>7_0</td>
       <td>COMPLETED</td>
       <td>MBM</td>
-      <td>122.274580</td>
-      <td>-2.191417</td>
-      <td>0.046855</td>
+      <td>235.614529</td>
+      <td>-2.708516</td>
+      <td>5.000000</td>
     </tr>
     <tr>
       <th>8</th>
@@ -1451,9 +1451,9 @@ Optimization complete after 10 iterations
       <td>8_0</td>
       <td>COMPLETED</td>
       <td>MBM</td>
-      <td>343.459085</td>
-      <td>-5.000000</td>
-      <td>1.153837</td>
+      <td>99.191797</td>
+      <td>-2.421275</td>
+      <td>0.707843</td>
     </tr>
     <tr>
       <th>9</th>
@@ -1461,9 +1461,9 @@ Optimization complete after 10 iterations
       <td>9_0</td>
       <td>COMPLETED</td>
       <td>MBM</td>
-      <td>365.891433</td>
-      <td>0.172744</td>
-      <td>5.000000</td>
+      <td>14.828306</td>
+      <td>-2.869805</td>
+      <td>2.455894</td>
     </tr>
   </tbody>
 </table>
