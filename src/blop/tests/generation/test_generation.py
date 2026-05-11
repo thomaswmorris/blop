@@ -11,7 +11,7 @@ from blop.ax.agent import Agent
 from blop.ax.dof import RangeDOF
 from blop.ax.objective import Objective
 from blop.evaluation.test_functions import TestFunctionEvaluation
-from blop.generation import all_strategies, get_generation_strategy
+from blop.generation import InvalidStrategyError, all_strategies, get_generation_strategy
 
 from ..conftest import MovableSignal
 from ..test_plans import _collect_optimize_events
@@ -25,6 +25,15 @@ def RE():
 @pytest.mark.parametrize("name", all_strategies)
 def test_get_generation_strategy(name):
     get_generation_strategy(name)
+
+
+def test_invalid_strategy():
+    try:
+        get_generation_strategy("invalid_strategy")
+    except InvalidStrategyError:
+        pass
+    except Exception as error:
+        raise error
 
 
 def test_optimize(RE):
